@@ -4,24 +4,26 @@
 ##  alters player score ##
 ##  alters game turn    ##
 
-class Turn
+module MathGame
+  class Turn
 
-  def initialize(player)
-    @player = player
-  end
-
-  def question
-    print "#{@player}: "
-    answer = Question.new.ask
-    if answer
-      puts '** Happy Buzzer Noise™ **'
-      true
-    elsif !answer
-      puts '** Angry Buzzer Noise™ **'
-      false
-    else
-      puts 'Uh oh! Something went wrong'
+    def initialize(player)
+      @player = player
     end
-  end
 
+    def question
+      print "#{@player}: "
+      answer = MathGame::Question.new.ask
+      if answer
+        puts '** Happy Buzzer Noise™ **'
+        true
+      elsif !answer
+        puts '** Angry Buzzer Noise™ **'
+        false
+      else
+        puts 'Uh oh! Something went wrong'
+      end
+    end
+
+  end
 end

@@ -10,4 +10,4 @@ print 'Player Two, enter your name: '
 player_two = gets.chomp
 puts
 
-Game.new(player_one, player_two).begin_game
+MathGame::Game.new(player_one, player_two).begin_game
