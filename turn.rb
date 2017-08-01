@@ -7,21 +7,20 @@
 module MathGame
   class Turn
 
-    def initialize(player)
-      @player = player
+    attr_reader :result
+
+    def initialize
+      @result = false
+      self.question
     end
 
     def question
-      print "#{@player}: "
-      answer = MathGame::Question.new.ask
-      if answer
+      game = MathGame::Question.new
+      if game.answer
         puts '** Happy Buzzer Noise™ **'
-        true
-      elsif !answer
-        puts '** Angry Buzzer Noise™ **'
-        false
+        @result = true
       else
-        puts 'Uh oh! Something went wrong'
+        puts '** Angry Buzzer Noise™ **'
       end
     end
 

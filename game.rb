@@ -5,20 +5,27 @@
 module MathGame
   class Game
 
-    def initialize(player_one, player_two)
-      @player_one = MathGame::Player.new(player_one)
-      @player_two = MathGame::Player.new(player_two)
+    def initialize
+      print 'Player One, enter your name: '
+      name = gets.chomp
+      @player_one = MathGame::Player.new(name)
+      print 'Player Two, enter your name: '
+      name = gets.chomp
+      @player_two = MathGame::Player.new(name)
+      self.begin_game
     end
 
     def begin_game
       while @player_one.score > 0 && @player_two.score > 0
-        answer_one = MathGame::Turn.new(@player_one.name).question
-        answer_two = MathGame::Turn.new(@player_two.name).question
-        if !answer_one
-          @player_one.score -= 1
+        print "#{@player_one.name}: "
+        turn_one = MathGame::Turn.new
+        print "#{@player_two.name}: "
+        turn_two = MathGame::Turn.new
+        if !turn_one.result
+          @player_one.lose_point
         end
-        if !answer_two
-          @player_two.score -= 1
+        if !turn_two.result
+          @player_two.lose_point
         end
         print "Score: "
         puts "#{@player_one.name} - #{@player_one.score}/3"
