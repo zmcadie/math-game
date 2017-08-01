@@ -15,8 +15,8 @@ module MathGame
     end
 
     def question
-      game = MathGame::Question.new
-      if game.answer
+      question = MathGame::Question.new
+      if question.answer
         puts '** Happy Buzzer Noise™ **'
         @result = true
       else
